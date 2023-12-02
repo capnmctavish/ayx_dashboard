@@ -1,4 +1,5 @@
 import pandas as pd
+import os
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -25,7 +26,7 @@ px.defaults.template = "ggplot2"
 external_css = ["https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css", ]
 # Create Dash app
 app = dash.Dash(__name__, external_stylesheets=external_css)
-
+server = app.server # Added in for Cloud Run compatibility
 # Define app layout
 app.layout = html.Div(className='text-dark text-center fw-bold fs-1', children=[
     html.H1(children='Financial Analysis Dashboard'),
@@ -135,4 +136,4 @@ app.layout = html.Div(className='text-dark text-center fw-bold fs-1', children=[
 
 # Run the app
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
