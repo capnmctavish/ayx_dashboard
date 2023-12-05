@@ -29,7 +29,7 @@ app = dash.Dash(__name__, external_stylesheets=external_css)
 server = app.server # Added in for Cloud Run compatibility
 # Define app layout
 app.layout = html.Div(className='text-dark text-center fw-bold fs-1', children=[
-    html.H1(children='Financial Analysis Dashboard'),
+    html.H1(children='AYX Financial Analysis Dashboard'),
 
     html.Div(className='container-fluid', children=[
         # First Row
